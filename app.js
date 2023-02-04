@@ -30,7 +30,7 @@ const depart = (ville, nb) => {
   nomVilleDepart.innerHTML = ville;
 };
 
-depart("Lausanne", 5);
+depart("Morges", 5);
 
 // affichier mes départs
 
