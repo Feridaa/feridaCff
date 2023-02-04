@@ -5,12 +5,22 @@ const nomVilleDepart = document.querySelector("h1");
 // stocker mon api et la transformer en json
 
 const depart = (ville, nb) => {
-  const data = fetch(
+  fetch(
     `http://transport.opendata.ch/v1/stationboard?station=${ville}&limit=${nb}`
   )
-    .then((resultat) => resultat.json())
+    .then((resultat) => {
+      if (resultat.status === 404) {
+        throw new Error("Oups");
+      }
+      return resultat.json();
+    })
+
     .then((data) => {
       console.log(data);
+    })
+
+    .catch((err) => {
+      console.log(err.message);
     });
 };
 
